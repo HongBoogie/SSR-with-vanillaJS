@@ -1,9 +1,11 @@
 import express from "express";
-import { generateHTML } from "./ssr.js";
-import { model } from "./model.js";
+import { generateHTML } from "./src/ssr.js";
+import { model } from "./src/model.js";
 
 const app = express();
 app.use(express.json());
+
+app.use("/src", express.static("./src"));
 
 app.get("/", (req, res) => {
   res.send(generateHTML(model));
