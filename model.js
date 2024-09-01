@@ -6,4 +6,11 @@ export const model = {
     "MVVM은 또 뭐야?",
     "공부해야 할게 왜이렇게 많아?",
   ],
+
+  addTodoItem(item) {
+    this.todoItems.push(item);
+  },
+  removeTodoItem(index) {
+    this.todoItems.splice(index, 1);
+  },
 };
