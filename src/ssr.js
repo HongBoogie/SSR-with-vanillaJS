@@ -1,6 +1,6 @@
 import { App } from "./components.js";
 
-export const generateHTML = (model) => `
+export const generateHTML = ({ todoItems }) => `
   <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -9,9 +9,12 @@ export const generateHTML = (model) => `
     </head>
     <body>
     <div id="app">
-      ${App(model.todoItems)}
+      ${App(todoItems)}
     </div>
-    <script src="./src/main.js"></script>
+    <script>
+      window.__INITIAL_MODEL__ = ${JSON.stringify({ todoItems })};
+    </script>
+    <script src="./src/main.js" type="module"></script>
     </body>
     </html>
 `;

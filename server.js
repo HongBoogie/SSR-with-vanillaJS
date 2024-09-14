@@ -7,18 +7,11 @@ app.use(express.json());
 
 app.use("/src", express.static("./src"));
 
-app.get("/", (req, res) => {
-  res.send(generateHTML(model));
-});
+app.get("/", (req, res) => res.send(generateHTML({ todoItems: ["test"] })));
 
-app.post("/api/todo-items", (req, res) => {
-  model.addTodoItem(req.body.content);
-  res.status(201).send();
-});
-
-app.delete("/api/todo-items/:index", (req, res) => {
-  model.removeTodoItem(req.params.index);
-  res.status(204).send();
+app.put("/api/todo-items", (req, res) => {
+  model.init({ todoItems: req.body.todoItems });
+  res.status(200).send(model.todoItems);
 });
 
 app.listen(3000, () =>
