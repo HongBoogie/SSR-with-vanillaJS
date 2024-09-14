@@ -1,4 +1,4 @@
-import { TodoList, Button } from "./components.js";
+import { App } from "./components.js";
 
 export const generateHTML = (model) => `
   <!DOCTYPE html>
@@ -9,9 +9,7 @@ export const generateHTML = (model) => `
     </head>
     <body>
     <div id="app">
-      ${Button({ id: "add", text: "Add Todo Item" })}
-      ${Button({ id: "remove", text: "Remove Todo Item" })}
-      ${TodoList(model.todoItems)}
+      ${App(model.todoItems)}
     </div>
     <script src="./src/main.js"></script>
     </body>
